@@ -1,8 +1,9 @@
 package net.mekomsolutions.maven.plugin.dependency;
 
-import static net.mekomsolutions.maven.plugin.dependency.Constants.ARTIFACT_SUFFIX;
-import static net.mekomsolutions.maven.plugin.dependency.Constants.OUTPUT_SEPARATOR;
-import static java.util.stream.Collectors.toList;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.maven.artifact.Artifact;
+import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.project.MavenProject;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.maven.artifact.Artifact;
-import org.apache.maven.plugin.logging.Log;
-import org.apache.maven.project.MavenProject;
+import static java.util.stream.Collectors.toList;
+import static net.mekomsolutions.maven.plugin.dependency.Constants.OUTPUT_SEPARATOR;
 
 /**
  * Helper class that captures and generates an artifact containing only declared dependencies along
@@ -99,7 +98,7 @@ public class DependencyTracker {
 	 * @throws IOException
 	 */
 	protected void saveDependencyArtifact(List<String> lines) throws IOException {
-		File artifactFile = Utils.instantiateFile(buildDirectory, buildFileName + ARTIFACT_SUFFIX);
+		File artifactFile = Utils.instantiateFile(buildDirectory, buildFileName);
 		
 		log.info("Saving dependency tracker artifact to " + artifactFile);
 		

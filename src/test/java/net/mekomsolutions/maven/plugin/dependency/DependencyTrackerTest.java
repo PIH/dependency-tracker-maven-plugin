@@ -1,19 +1,5 @@
 package net.mekomsolutions.maven.plugin.dependency;
 
-import static net.mekomsolutions.maven.plugin.dependency.Constants.ARTIFACT_SUFFIX;
-import static net.mekomsolutions.maven.plugin.dependency.Constants.OUTPUT_SEPARATOR;
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.apache.commons.codec.digest.DigestUtils.sha1Hex;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DefaultArtifact;
 import org.apache.maven.plugin.logging.Log;
@@ -26,6 +12,19 @@ import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static net.mekomsolutions.maven.plugin.dependency.Constants.OUTPUT_SEPARATOR;
+import static org.apache.commons.codec.digest.DigestUtils.sha1Hex;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Utils.class)
@@ -119,7 +118,7 @@ public class DependencyTrackerTest {
 	public void saveDependencyArtifact_shouldSaveTheDependencyArtifactToTheBuildDirectory() throws Exception {
 		final File artifactFile = Mockito.mock(File.class);
 		List<String> testDependencies = Arrays.asList("dependency1=hash1", "dependency2=hash2");
-		Mockito.when(Utils.instantiateFile(mockBuildDir, TEST_FILE_NAME + ARTIFACT_SUFFIX)).thenReturn(artifactFile);
+		Mockito.when(Utils.instantiateFile(mockBuildDir, TEST_FILE_NAME)).thenReturn(artifactFile);
 		
 		tracker.saveDependencyArtifact(testDependencies);
 		
