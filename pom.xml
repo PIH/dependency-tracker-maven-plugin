@@ -4,24 +4,13 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.mekomsolutions.maven.plugin</groupId>
+    <groupId>org.pih.maven.plugin</groupId>
     <artifactId>dependency-tracker-maven-plugin</artifactId>
     <version>1.1.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>Dependency Tracker Maven Plugin</name>
     <description>Maven plugin to track dependency changes between builds</description>
-
-    <organization>
-        <name>Mekom Solutions</name>
-        <url>https://www.mekomsolutions.com</url>
-    </organization>
-    <developers>
-        <developer>
-            <name>Mekom Solutions</name>
-            <url>https://www.mekomsolutions.com</url>
-        </developer>
-    </developers>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -94,16 +83,14 @@
     </build>
 
     <distributionManagement>
-        <repository>
-            <name>Mekom Solutions Nexus repo for releases</name>
-            <id>mks-nexus-public-releases</id>
-            <url>https://nexus.mekomsolutions.net/repository/maven-releases</url>
-        </repository>
         <snapshotRepository>
-            <name>Mekom Solutions Nexus repo for snapshots</name>
-            <id>mks-nexus-public-snapshots</id>
-            <url>https://nexus.mekomsolutions.net/repository/maven-snapshots</url>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
 </project>
